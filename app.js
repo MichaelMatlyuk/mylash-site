@@ -58,18 +58,18 @@ const obs = new IntersectionObserver((entries) => {
 }, { rootMargin: "-35% 0px -55% 0px", threshold: [0.12, 0.25, 0.4] });
 
 panels.forEach(p => obs.observe(p));
-// Авто-скрытие верхней панели при скролле вниз (чтобы не мешала)
-let lastY = window.scrollY;
 
-window.addEventListener("scroll", () => {
-  const y = window.scrollY;
+const topBar = document.querySelector("header.top");
 
-  // если скроллим вниз и уже немного проскроллили — скрываем
-  if (y > lastY && y > 120) {
-    document.body.classList.add("nav-hide");
-  } else {
-    document.body.classList.remove("nav-hide");
-  }
+function setHeaderState() {
+  const scrolled = window.scrollY > 40;
 
-  lastY = y;
-}, { passive: true });
+  // стекло/сжатие для шапки
+  if (topBar) topBar.classList.toggle("is-scrolled", scrolled);
+
+  // чтобы вкладки исчезали даже если они НЕ внутри header
+  document.body.classList.toggle("is-scrolled", scrolled);
+}
+
+setHeaderState();
+window.addEventListener("scroll", setHeaderState, { passive: true });

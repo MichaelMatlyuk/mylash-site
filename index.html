@@ -25,106 +25,87 @@
     <div class="brand">
       <div class="logo">MyLash</div>
       <div class="sub">Нежный взгляд • аккуратная работа</div>
-    </div>
-
-    <a class="cta" href="https://wa.me/972000000000" target="_blank" rel="noreferrer">Записаться</a>
   </header>
 
-  <!-- top pills (anchors) -->
   <nav class="pills" aria-label="Навигация">
     <a class="pill is-active" href="#about" data-link="about">Обо мне</a>
     <a class="pill" href="#price" data-link="price">Прайс</a>
     <a class="pill" href="#portfolio" data-link="portfolio">Фото</a>
     <a class="pill" href="#training" data-link="training">Обучение</a>
-    <a class="pill" href="#faq" data-link="faq">FAQ</a>
     <a class="pill" href="#contacts" data-link="contacts">Контакты</a>
     <a class="pill" href="#location" data-link="location">Гео</a>
   </nav>
-
+  </div>
   <main class="feed" id="feed">
 
     <!-- PANEL: about (photo + text) -->
     <section class="panel" id="about" data-section="about">
-      <div class="card split">
-        <div class="media">
-          <!-- положи своё фото: img/about.jpg -->
-          <img src="./img/about.jpg" alt="Фото мастера" onerror="this.src='./img/placeholder.jpg'">
-          <div class="mediaTag">MyLash</div>
+      <div class="card about-center">
+    <div class="content">
+        <h2>Обо мне</h2>
+
+        <p class="muted">
+        Меня зовут Юлия. Более 5 лет создаю аккуратные,
+        выразительные и естественные образы.
+        Моя задача — подчеркнуть вашу природную красоту,
+        сохраняя лёгкость и комфорт.
+        </p>
+
+        <p class="muted">
+        Работаю быстро (от 1,5 часа), использую только качественные материалы
+        и уделяю внимание каждой детали — от формы до идеальной симметрии.
+        </p>
+
+        <div class="chips">
+            <span>Стерильно</span>
+            <span>Нежно</span>
+            <span>Комфорт</span>
         </div>
 
-        <div class="content">
-          <h2>Обо мне</h2>
-          <p class="muted">
-            Привет! Я lash-мастер. Подбираю эффект под форму глаз, работаю аккуратно и стерильно.
-          </p>
-
-          <div class="chips">
-            <span class="chip">Стерильно</span>
-            <span class="chip">Нежно</span>
-            <span class="chip">Комфорт</span>
-          </div>
-
-          <div class="actions">
-            <a class="btn btn-primary" href="https://wa.me/972000000000" target="_blank" rel="noreferrer">WhatsApp</a>
-            <a class="btn btn-ghost" href="https://instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
-          </div>
-
-          <div class="miniStats">
-            <div class="miniStat"><b>2+</b><span>года опыта</span></div>
-            <div class="miniStat"><b>300+</b><span>клиентов</span></div>
-            <div class="miniStat"><b>5.0</b><span>отзывы</span></div>
-          </div>
+        <div class="stats">
+            <div><b>5+</b><span>лет опыта</span></div>
+            <div><b>1000+</b><span>клиентов</span></div>
+            <div><b>5.0</b><span>отзывы</span></div>
         </div>
-      </div>
+    </div>
+</div>
     </section>
 
     <!-- PANEL: price (text) -->
     <section class="panel" id="price" data-section="price">
       <div class="card">
-        <div class="head">
-          <h2>Прайс</h2>
-          <p class="muted">Заменишь на свои цены.</p>
-        </div>
-
+         <h2 class="price-title">Прайс</h2>
         <div class="price">
           <div class="row">
             <div>
-              <div class="ttl">Классика 1D</div>
-              <div class="muted sm">1:45–2:15</div>
+              <div class="ttl">1D</div>
             </div>
-            <div class="val">₪ 250</div>
+            <div class="val">2300 ₽</div>
           </div>
 
           <div class="row">
             <div>
-              <div class="ttl">2D / Лёгкий объём</div>
-              <div class="muted sm">2:00–2:30</div>
+              <div class="ttl">2D</div>
             </div>
-            <div class="val">₪ 300</div>
+            <div class="val">2500 ₽</div>
           </div>
 
           <div class="row">
             <div>
-              <div class="ttl">3D / Объём</div>
-              <div class="muted sm">2:15–2:45</div>
+              <div class="ttl">3D</div>
             </div>
-            <div class="val">₪ 350</div>
+            <div class="val">2700 ₽</div>
           </div>
 
           <div class="row">
             <div>
-              <div class="ttl">Ламинирование</div>
-              <div class="muted sm">1:00–1:20</div>
+              <div class="ttl">4D</div>
             </div>
-            <div class="val">₪ 220</div>
+            <div class="val">3000 ₽</div>
           </div>
         </div>
 
         <div class="note">* Коррекция / снятие — по согласованию.</div>
-
-        <a class="btn btn-primary full" href="https://wa.me/972000000000" target="_blank" rel="noreferrer">
-          Записаться
-        </a>
       </div>
     </section>
 
@@ -151,57 +132,31 @@
 
     <!-- PANEL: training (photo + text, reversed by css) -->
     <section class="panel" id="training" data-section="training">
-      <div class="card split split--reverse">
-        <div class="media">
-          <img src="./img/training.jpg" alt="Обучение" onerror="this.src='./img/placeholder.jpg'">
-          <div class="mediaTag">Lash Start</div>
-        </div>
+     <div class="card training-center">
+    <h2>Обучение</h2>
 
-        <div class="content">
-          <h2>Обучение</h2>
-          <p class="muted">Курс для новичков + практика на модели. Сертификат и поддержка.</p>
+    <p class="muted">
+        Курс для новичков с практикой на модели.
+        Поддержка после обучения и выдача сертификата.
+    </p>
 
-          <div class="callout">
-            <div class="calloutTitle">Что внутри</div>
-            <div class="muted sm">1–2 дня • практика • разбор ошибок</div>
-          </div>
+    <div class="training-box">
+        <h3>Что входит в курс</h3>
 
-          <ul class="list">
-            <li>Материалы, клей, безопасность</li>
+        <ul>
+            <li>Материалы и инструменты</li>
             <li>Постановка руки и скорость</li>
+            <li>Разбор ошибок</li>
             <li>Эффекты: натуральный / лиса / кукла</li>
-          </ul>
+        </ul>
+    </div>
 
-          <a class="btn btn-primary full" href="https://wa.me/972000000000" target="_blank" rel="noreferrer">
-            Узнать даты и цену
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- PANEL: FAQ -->
-    <section class="panel" id="faq" data-section="faq">
-      <div class="card">
-        <div class="head">
-          <h2>Частые вопросы</h2>
-          <p class="muted">Коротко и понятно.</p>
-        </div>
-
-        <div class="faq">
-          <details class="qa">
-            <summary>Сколько держатся ресницы?</summary>
-            <p class="muted">Обычно 3–5 недель — зависит от ухода и скорости обновления ресниц.</p>
-          </details>
-          <details class="qa">
-            <summary>Можно ли мочить в первый день?</summary>
-            <p class="muted">Лучше не мочить первые 24 часа, дальше — как обычно.</p>
-          </details>
-          <details class="qa">
-            <summary>Если есть аллергия?</summary>
-            <p class="muted">Напиши заранее — обсудим варианты и риски.</p>
-          </details>
-        </div>
-      </div>
+    <div class="training-info">
+        <div><b>1–2</b><span>дня обучения</span></div>
+        <div><b>Практика</b><span>на модели</span></div>
+        <div><b>Сертификат</b><span>по окончании</span></div>
+    </div>
+</div>
     </section>
 
     <!-- PANEL: Contacts -->
@@ -213,21 +168,27 @@
         </div>
 
         <div class="socials">
-          <a class="soc" href="https://wa.me/972000000000" target="_blank" rel="noreferrer">
-            <span class="soc__icon">WA</span>
-            <span><span class="soc__title">WhatsApp</span><span class="soc__meta">быстрая запись</span></span>
+          <a class="soc" href="https://dikidi.ru/1512076" target="_blank" rel="noreferrer">
+            <span class="soc__icon">DI</span>
+            <span><span class="soc__title">DIKIDI</span><span class="soc__meta">быстрая запись</span></span>
             <span class="soc__go">→</span>
           </a>
 
-          <a class="soc" href="https://instagram.com/" target="_blank" rel="noreferrer">
-            <span class="soc__icon">IG</span>
-            <span><span class="soc__title">Instagram</span><span class="soc__meta">@mylash</span></span>
+          <a class="soc" href="https://vk.ru/musienkolashes" target="_blank" rel="noreferrer">
+            <span class="soc__icon">ВК</span>
+            <span><span class="soc__title">ВКонтакте</span><span class="soc__meta">@mylash</span></span>
             <span class="soc__go">→</span>
           </a>
 
-          <a class="soc" href="https://t.me/" target="_blank" rel="noreferrer">
-            <span class="soc__icon">TG</span>
-            <span><span class="soc__title">Telegram</span><span class="soc__meta">написать</span></span>
+          <a class="soc" href="https://t.me/musienkojuliya " target="_blank" rel="noreferrer">
+            <span class="soc__icon">ТГ</span>
+            <span><span class="soc__title">Телеграмм </span><span class="soc__meta">написать</span></span>
+            <span class="soc__go">→</span>
+          </a>
+
+          <a class="soc" href="+79194549474" target="_blank" rel="noreferrer">
+            <span class="soc__icon">ТЛ</span>
+            <span><span class="soc__title"> Номер Телефона </span><span class="soc__meta">написать</span></span>
             <span class="soc__go">→</span>
           </a>
         </div>

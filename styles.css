@@ -62,65 +62,86 @@ body{
   mix-blend-mode: soft-light;
 }
 
-/* ---------- Header ---------- */
-.top{
+/* HEADER */
+header.top{
   position: sticky;
-  top:0;
+  top: 0;
   z-index: 50;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding: 14px 14px 10px;
 
-  background: rgba(255,255,255,.92);   /* было .55 */
-  border-bottom: 1px solid rgba(0,0,0,.06);
-  backdrop-filter: blur(12px);
+  /* чтобы был по центру */
+  width: min(1200px, calc(100% - 32px));
+  margin: 14px auto 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  padding: 18px 16px 14px;
+
+  border-radius: 22px;
+
+  /* мягкое "стекло" в начале */
+  background: rgba(255,255,255,.78);
+  border: 1px solid rgba(255, 105, 180, .10);
+  box-shadow: 0 18px 40px rgba(255, 105, 180, .14);
+
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+
+  transition: background .25s ease, box-shadow .25s ease, padding .25s ease;
 }
-.brand{ text-align:center; }
+
+.brand{
+  text-align: center;
+  width: 100%;
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+/* ЛОГО */
 .logo{
   font-family: "Great Vibes", cursive;
-  font-size: 56px;
+  font-size: 72px;   /* крупно как ты хотел */
   line-height: 1;
   color: var(--pink);
   letter-spacing: .6px;
 }
+
 .sub{
-  margin-top: 4px;
+  margin-top: 6px;
   font-size: 13px;
   color: var(--muted);
 }
-.cta{
-  position:absolute;
-  right: 14px;
-  top: 14px;
-  text-decoration:none;
-  color:#fff;
-  font-weight: 700;
-  font-size: 13px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--pink) 0%, var(--pink2) 100%);
-  box-shadow: 0 14px 30px rgba(255,79,163,.28);
+
+
+/* ======= СКРОЛЛ СОСТОЯНИЕ ======= */
+/* При скролле: стекло прозрачнее, вкладки исчезают, остаётся только бренд */
+header.top.is-scrolled{
+  padding: 10px 16px 8px;
+
+  background: rgba(255,255,255,.35);   /* более прозрачное */
+  box-shadow: 0 14px 34px rgba(0,0,0,.08);
+
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
 }
 
-/* ---------- Pills nav ---------- */
-.pills{
-  position: sticky;
-  top: 84px;
-  z-index: 49;
 
-  display:flex;
-  justify-content:center;
-  gap: 10px;
+header.top.is-scrolled .brand{
+  transform: translateY(-2px) scale(.95);
+  opacity: .98;
+}
 
-  padding: 10px 14px 12px;
 
-  background: rgba(255,255,255,.88);   /* было .40 */
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,0,0,.06);
 
-  overflow:auto;
-  -webkit-overflow-scrolling: touch;
+.floating{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.brand{
+  text-align: center;
+  margin-bottom: 6px;
 }
 .pill{
   text-decoration:none;
@@ -325,6 +346,12 @@ h2{
 
 /* price list */
 .price{ margin-top: 10px; }
+#price h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 26px;
+  font-weight: 600;
+}
 .row{
   display:flex;
   justify-content:space-between;
@@ -471,15 +498,476 @@ h2{
   .panel{ min-height: calc(100vh - 160px); }
   .cta{ padding: 9px 12px; font-size: 12px; }
 }
-/* Шапка уезжает вниз/вверх аккуратно */
-.top, .pills{
-  transition: transform .25s ease;
-  will-change: transform;
-}
 
 body.nav-hide .top{
   transform: translateY(-100%);
 }
-body.nav-hide .pills{
-  transform: translateY(-140%);
+/* === FIX: Portfolio preview not visible === */
+.masonry{
+  columns: 2;
+  column-gap: 12px;
+  margin-top: 12px;
+}
+
+.shot{
+  display: inline-block;     /* важно для columns */
+  width: 100%;
+  margin: 0 0 12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  break-inside: avoid;
+  cursor: pointer;
+}
+
+.shot img{
+  display: block;
+  width: 100%;
+  height: auto;              /* важно */
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 16px 38px rgba(0,0,0,.14);
+  opacity: 1 !important;     /* на всякий */
+  visibility: visible !important;
+  transform: translateZ(0);
+  transition: transform .18s ease, filter .18s ease;
+}
+
+.shot:hover img{
+  transform: scale(1.02);
+  filter: saturate(1.05) contrast(1.02);
+}
+
+/* mobile: 1 column */
+@media (max-width: 520px){
+  .masonry{ columns: 1; }
+}
+#gallery{ position: relative; z-index: 2; }
+.card{ overflow: visible; }  /* чтобы columns не резало */
+/* FIX: если JS не добавил is-visible — карточки всё равно видны */
+.card{
+  opacity: 1 !important;
+  transform: none !important;
+}
+/* Центрированный About */
+.about-center{
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 60px 50px;
+}
+
+.about-center .muted{
+  font-size: 17px;
+  line-height: 1.8;
+  max-width: 640px;
+  margin: 0 auto 20px;
+}
+
+.about-center .chips{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:20px 0;
+}
+
+.about-center .chips span{
+  background:#f4d6e2;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:13px;
+}
+
+.about-center .stats{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  margin-top:30px;
+}
+
+.about-center .stats div{
+  display:flex;
+  flex-direction:column;
+  font-size:14px;
+}
+
+.about-center .stats b{
+  font-size:20px;
+  color:#e94f8a;
+}
+/* TRAINING CENTER STYLE */
+.training-center{
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 60px 50px;
+  text-align: center;
+}
+
+.training-center .muted{
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.training-box{
+  background: rgba(255,255,255,.6);
+  padding: 25px 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(0,0,0,.05);
+  margin-bottom: 35px;
+}
+
+.training-box h3{
+  margin-bottom: 15px;
+}
+
+.training-box ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.training-box li{
+  margin: 10px 0;
+  font-size: 15px;
+}
+
+.training-info{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+}
+
+.training-info div{
+  display:flex;
+  flex-direction:column;
+  font-size:14px;
+}
+
+.training-info b{
+  font-size:18px;
+  color:#e94f8a;
+}
+/* === Apple-style floating glass header === */
+.top{
+  position: sticky;
+  top: 14px;                 /* не прилипает к краю */
+  z-index: 100;
+  margin: 0 auto;
+  width: min(1100px, calc(100% - 24px));
+  border-radius: 22px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.16);   /* почти прозрачный */
+  border: 1px solid rgba(255,255,255,0.35);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.10);
+  transition: transform .25s ease, background .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+/* состояние когда проскроллил */
+.top.is-scrolled{
+  background: rgba(255,255,255,.40);
+  backdrop-filter: blur(22px) saturate(1.2);
+  -webkit-backdrop-filter: blur(22px) saturate(1.2);
+  box-shadow: 0 14px 30px rgba(0,0,0,.10);
+}
+
+/* pills под шапкой */
+.pills{
+  width: min(1200px, calc(100% - 32px));
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  transition: opacity .25s ease, transform .25s ease;
+}
+body.is-scrolled .pills{
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+}
+
+/* чтобы якоря не прятались под стеклом */
+html{ scroll-padding-top: 190px; }
+.panel{ scroll-margin-top: 190px; }
+
+/* === One floating glass container (fix overlap) === */
+.floating{
+  position: sticky;
+  top: 12px;
+  z-index: 9999;
+  width: min(980px, calc(100% - 24px));
+  margin: 0 auto;
+  padding: 12px 14px 14px;
+  border-radius: 22px;
+
+  background: rgba(255,255,255,0.22);
+  border: 1px solid rgba(255,255,255,0.45);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 18px 60px rgba(0,0,0,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.35);
+
+  transition: padding .22s ease, background .22s ease, box-shadow .22s ease, transform .22s ease;
+}
+
+.floating.is-compact{
+  padding: 8px 12px 10px;
+  background: rgba(255,255,255,0.28);
+  box-shadow:
+    0 14px 46px rgba(0,0,0,0.16),
+    inset 0 1px 0 rgba(255,255,255,0.35);
+}
+
+/* внутри плавающего блока элементы уже НЕ sticky */
+.top{
+  padding: 0;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.brand{ text-align: center; width: 100%; }
+
+.logo{
+  font-family: "Great Vibes", cursive;
+  font-size: 73px;       /* крупно */
+  line-height: 1;
+  color: var(--pink);    /* твой розовый */
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.sub{
+  opacity: .75;
+  font-size: 14px;
+}
+
+.pill{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 16px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255, 105, 180, 0.22);
+  background: rgba(255,255,255,0.38);
+  color: rgba(0,0,0,0.72);
+  text-decoration: none;
+
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+
+.pill:hover{
+  transform: translateY(-1px);
+  border-color: rgba(255, 105, 180, 0.38);
+  background: rgba(255,255,255,0.55);
+}
+
+.pill.is-active{
+  background: rgba(255, 105, 180, 0.18);
+  border-color: rgba(255, 105, 180, 0.55);
+}
+
+/* Make anchor jumps not hide content under header */
+html{ scroll-padding-top: 170px; }
+.panel{ scroll-margin-top: 170px; }
+
+/* remove weird white line on scroll */
+.floating{
+  background-clip: padding-box;
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+.top{
+  border-bottom: 0 !important; /* убрать разделитель, который дает белую линию */
+}
+/* force header always visible */
+.floating{
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+/* DEBUG/FIX: force floating header visible */
+.floating{
+  position: fixed !important;
+  top: 12px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important; /* центрируем */
+  z-index: 9999 !important;
+  width: min(1100px, calc(100% - 24px)) !important;
+}
+
+
+/* чтобы сам блок шапки тоже был по центру */
+.floating{
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+/* ======= APPLE-STYLE HEADER (start = solid, scroll = glass) ======= */
+
+/* базовое состояние: в начале сайта шапка как одно целое */
+.top{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  /* чтобы в начале не выглядела отдельной карточкой */
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  /* мягкий “слив” с фоном */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 235, 245, 0.95) 0%,
+    rgba(255, 255, 255, 0.75) 60%,
+    rgba(255, 255, 255, 0.00) 100%
+  );
+
+  transition: background .25s ease, box-shadow .25s ease, border-radius .25s ease, backdrop-filter .25s ease;
+}
+
+/* состояние при скролле: стекло + еще прозрачнее */
+.top.is-scrolled{
+  background: rgba(255,255,255,0.38);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.12);
+}
+
+/* чтобы сверху не было белой полосы */
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
+/* HEADER: в начале как единый блок */
+header.top{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 18px 16px 14px;
+  background: transparent;
+}
+
+/* Блок бренда/лого по центру */
+header.top .brand{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Навигация по центру */
+
+/* --- Поведение при скролле --- */
+
+/* Лого превращается в "стекло" и остаётся, вкладки уходят */
+header.top.is-scrolled{
+  padding: 10px 16px 10px;
+}
+
+/* “glass” только для лого */
+header.top.is-scrolled .brand{
+  padding: 10px 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.22);
+  box-shadow: 0 10px 28px rgba(0,0,0,.10);
+}
+
+/* лого чуть меньше и мягче (но остаётся красивым) */
+header.top.is-scrolled .logo{
+  font-size: 56px;
+  opacity: .92;
+}
+
+/* подпись можно сделать тише */
+header.top.is-scrolled .sub{
+  opacity: .65;
+}
+
+
+/* плавные переходы */
+header.top .brand,
+header.top .logo,
+header.top .sub,
+header.top .pills{
+  transition: all .35s ease;
+}
+
+/* ШАПКА: всё по центру */
+header.top{
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 18px 16px 14px;
+  background: transparent;
+}
+
+/* бренд/лого по центру */
+header.top .brand{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+
+/* Плавность */
+header.top .brand,
+header.top .logo,
+header.top .sub,
+
+
+/* делаем "glass" только под брендом */
+body.is-scrolled header.top{
+  padding: 10px 16px;
+}
+
+body.is-scrolled header.top .brand{
+  width: auto;
+  padding: 10px 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.16);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.22);
+  box-shadow: 0 10px 28px rgba(0,0,0,.10);
+}
+
+body.is-scrolled header.top .logo{
+  opacity: .92;
+}
+
+body.is-scrolled header.top .sub{
+  opacity: .65;
 }
