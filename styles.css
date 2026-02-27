@@ -990,3 +990,28 @@ img, video, svg, canvas{
 *, *::before, *::after{
   box-sizing: border-box;
 }
+
+/* Мобильная фиксация ширины */
+@media (max-width: 520px){
+
+  html, body{
+    overflow-x: hidden;
+  }
+
+  .panel{
+    width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .card{
+    width: 100% !important;
+    margin: 0 auto;
+  }
+
+  .feed{
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}
