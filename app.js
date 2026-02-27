@@ -59,19 +59,17 @@ const obs = new IntersectionObserver((entries) => {
 
 panels.forEach(p => obs.observe(p));
 
-const topBar =
-  document.querySelector("header.top") ||
-  document.querySelector(".floating") ||
-  document.querySelector("header");
+const topBar = document.querySelector("header.top");
 
 function setHeaderState() {
   const scrolled = window.scrollY > 40;
 
+  // класс на header (для стекла/сжатия)
   if (topBar) topBar.classList.toggle("is-scrolled", scrolled);
 
-  // важно: чтобы правила в CSS срабатывали (body.is-scrolled ...)
+  // класс на body (для правил типа body.is-scrolled .pills)
   document.body.classList.toggle("is-scrolled", scrolled);
 }
 
-setHeaderState(); // чтобы сразу было правильно после перезагрузки
+setHeaderState();
 window.addEventListener("scroll", setHeaderState, { passive: true });

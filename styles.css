@@ -1015,3 +1015,34 @@ img, video, svg, canvas{
   }
 
 }
+@media (max-width: 520px){
+  header.top{
+    position: sticky;
+    top: 10px;
+    left: 0;
+    right: 0;
+
+    width: calc(100% - 24px);
+    margin: 10px auto 0;
+  }
+}
+@media (max-width: 520px){
+  /* блок с 3 пунктами */
+  .miniStats{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .miniStat{
+    flex: 1 1 30%;
+    min-width: 110px;
+    text-align: center;
+  }
+
+  /* если где-то есть nowrap — убираем */
+  .miniStat, .miniStat *{
+    white-space: normal;
+  }
+}
