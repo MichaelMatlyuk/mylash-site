@@ -1118,51 +1118,19 @@ img, video, svg, canvas{
   }
 }
 
-/* ===== MOBILE HARD FIX ===== */
 @media (max-width: 768px){
-
-  /* 1) Шапку и меню НИКОГДА не прячем */
-  header.top, nav.pills{
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    transform: none !important;
-    pointer-events: auto !important;
-  }
-
-  /* 2) Поднимаем шапку и меню над всеми слоями */
-  header.top{
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 99999 !important;
-    background: rgba(255,255,255,.80) !important;
-    backdrop-filter: blur(10px);
-  }
-
-  nav.pills{
-    position: sticky !important;
-    top: 78px !important; /* если шапка выше/ниже — поменяй на 70-110 */
-    z-index: 99998 !important;
-    background: rgba(255,255,255,.70) !important;
-    backdrop-filter: blur(10px);
-  }
-
-  /* 3) Частая причина: фон/слои перекрывают — уводим фон назад */
-  .bg{
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: -1 !important;
-    pointer-events: none !important;
-  }
-
-  /* 4) Убираем “уезд” только в блоке обучения (3 пункта снизу) */
-  .miniStats{
+  #training .miniStats, 
+  #training .stats,
+  #training .features{
     display: flex !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
     gap: 12px !important;
   }
-  .miniStat{
+
+  #training .miniStat,
+  #training .stat,
+  #training .feature{
     flex: 1 1 140px !important;
     min-width: 140px !important;
     text-align: center !important;
