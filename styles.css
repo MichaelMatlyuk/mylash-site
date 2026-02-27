@@ -971,3 +971,22 @@ body.is-scrolled header.top .logo{
 body.is-scrolled header.top .sub{
   opacity: .65;
 }
+
+/* FIX: без поломки sticky */
+html { width: 100%; }
+
+body{
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;   /* вместо hidden */
+}
+
+/* медиа/картинки */
+img, video, svg, canvas{
+  max-width: 100%;
+  height: auto;
+}
+
+*, *::before, *::after{
+  box-sizing: border-box;
+}

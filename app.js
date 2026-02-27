@@ -59,17 +59,19 @@ const obs = new IntersectionObserver((entries) => {
 
 panels.forEach(p => obs.observe(p));
 
-const topBar = document.querySelector("header.top");
+const topBar =
+  document.querySelector("header.top") ||
+  document.querySelector(".floating") ||
+  document.querySelector("header");
 
 function setHeaderState() {
   const scrolled = window.scrollY > 40;
 
-  // стекло/сжатие для шапки
   if (topBar) topBar.classList.toggle("is-scrolled", scrolled);
 
-  // чтобы вкладки исчезали даже если они НЕ внутри header
+  // важно: чтобы правила в CSS срабатывали (body.is-scrolled ...)
   document.body.classList.toggle("is-scrolled", scrolled);
 }
 
-setHeaderState();
+setHeaderState(); // чтобы сразу было правильно после перезагрузки
 window.addEventListener("scroll", setHeaderState, { passive: true });
