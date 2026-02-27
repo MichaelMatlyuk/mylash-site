@@ -186,8 +186,9 @@ header.top.is-scrolled .brand{
 
 /* ---------- Cards: glass premium ---------- */
 .card{
+  max-width: 1200px;
   width: 100%;
-  max-width: 900px;
+  max-width: 1200px;
   border-radius: var(--radius);
   background: var(--glass);
   border: 1px solid var(--stroke);
