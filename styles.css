@@ -1102,3 +1102,19 @@ img, video, svg, canvas{
     padding-top: 10px;
   }
 }
+/* FIX: Training miniStats on mobile */
+@media (max-width: 520px){
+  .miniStats{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .miniStat{
+    flex: 1 1 140px;   /* чтобы переносилось */
+    min-width: 140px;
+    text-align: center;
+  }
+}
+
