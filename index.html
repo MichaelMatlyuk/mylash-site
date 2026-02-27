@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>MyLash — студия ресниц</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./styles.css"/>
+</head>
+
+<body>
+  <!-- luxury background layers -->
+  <div class="bg">
+    <div class="bg__blob bg__blob--a"></div>
+    <div class="bg__blob bg__blob--b"></div>
+    <div class="bg__blob bg__blob--c"></div>
+    <div class="bg__noise"></div>
+  </div>
+
+  <header class="top">
+    <div class="brand">
+      <div class="logo">MyLash</div>
+      <div class="sub">Нежный взгляд • аккуратная работа</div>
+    </div>
+
+    <a class="cta" href="https://wa.me/972000000000" target="_blank" rel="noreferrer">Записаться</a>
+  </header>
+
+  <!-- top pills (anchors) -->
+  <nav class="pills" aria-label="Навигация">
+    <a class="pill is-active" href="#about" data-link="about">Обо мне</a>
+    <a class="pill" href="#price" data-link="price">Прайс</a>
+    <a class="pill" href="#portfolio" data-link="portfolio">Фото</a>
+    <a class="pill" href="#training" data-link="training">Обучение</a>
+    <a class="pill" href="#faq" data-link="faq">FAQ</a>
+    <a class="pill" href="#contacts" data-link="contacts">Контакты</a>
+    <a class="pill" href="#location" data-link="location">Гео</a>
+  </nav>
+
+  <main class="feed" id="feed">
+
+    <!-- PANEL: about (photo + text) -->
+    <section class="panel" id="about" data-section="about">
+      <div class="card split">
+        <div class="media">
+          <!-- положи своё фото: img/about.jpg -->
+          <img src="./img/about.jpg" alt="Фото мастера" onerror="this.src='./img/placeholder.jpg'">
+          <div class="mediaTag">MyLash</div>
+        </div>
+
+        <div class="content">
+          <h2>Обо мне</h2>
+          <p class="muted">
+            Привет! Я lash-мастер. Подбираю эффект под форму глаз, работаю аккуратно и стерильно.
+          </p>
+
+          <div class="chips">
+            <span class="chip">Стерильно</span>
+            <span class="chip">Нежно</span>
+            <span class="chip">Комфорт</span>
+          </div>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="https://wa.me/972000000000" target="_blank" rel="noreferrer">WhatsApp</a>
+            <a class="btn btn-ghost" href="https://instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+          </div>
+
+          <div class="miniStats">
+            <div class="miniStat"><b>2+</b><span>года опыта</span></div>
+            <div class="miniStat"><b>300+</b><span>клиентов</span></div>
+            <div class="miniStat"><b>5.0</b><span>отзывы</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL: price (text) -->
+    <section class="panel" id="price" data-section="price">
+      <div class="card">
+        <div class="head">
+          <h2>Прайс</h2>
+          <p class="muted">Заменишь на свои цены.</p>
+        </div>
+
+        <div class="price">
+          <div class="row">
+            <div>
+              <div class="ttl">Классика 1D</div>
+              <div class="muted sm">1:45–2:15</div>
+            </div>
+            <div class="val">₪ 250</div>
+          </div>
+
+          <div class="row">
+            <div>
+              <div class="ttl">2D / Лёгкий объём</div>
+              <div class="muted sm">2:00–2:30</div>
+            </div>
+            <div class="val">₪ 300</div>
+          </div>
+
+          <div class="row">
+            <div>
+              <div class="ttl">3D / Объём</div>
+              <div class="muted sm">2:15–2:45</div>
+            </div>
+            <div class="val">₪ 350</div>
+          </div>
+
+          <div class="row">
+            <div>
+              <div class="ttl">Ламинирование</div>
+              <div class="muted sm">1:00–1:20</div>
+            </div>
+            <div class="val">₪ 220</div>
+          </div>
+        </div>
+
+        <div class="note">* Коррекция / снятие — по согласованию.</div>
+
+        <a class="btn btn-primary full" href="https://wa.me/972000000000" target="_blank" rel="noreferrer">
+          Записаться
+        </a>
+      </div>
+    </section>
+
+    <!-- PANEL: portfolio (photo block) -->
+    <section class="panel" id="portfolio" data-section="portfolio">
+      <div class="card">
+        <div class="head">
+          <h2>Портфолио</h2>
+          <p class="muted">Нажми на фото, чтобы увеличить.</p>
+        </div>
+
+        <div class="masonry" id="gallery">
+          <button class="shot" data-full="./img/work1.jpg"><img src="./img/work1.jpg" alt="Работа 1" onerror="this.src='./img/placeholder.jpg'"></button>
+          <button class="shot" data-full="./img/work2.jpg"><img src="./img/work2.jpg" alt="Работа 2" onerror="this.src='./img/placeholder.jpg'"></button>
+          <button class="shot" data-full="./img/work3.jpg"><img src="./img/work3.jpg" alt="Работа 3" onerror="this.src='./img/placeholder.jpg'"></button>
+          <button class="shot" data-full="./img/work4.jpg"><img src="./img/work4.jpg" alt="Работа 4" onerror="this.src='./img/placeholder.jpg'"></button>
+        </div>
+
+        <a class="btn btn-ghost full" href="https://instagram.com/" target="_blank" rel="noreferrer">
+          Смотреть больше в Instagram
+        </a>
+      </div>
+    </section>
+
+    <!-- PANEL: training (photo + text, reversed by css) -->
+    <section class="panel" id="training" data-section="training">
+      <div class="card split split--reverse">
+        <div class="media">
+          <img src="./img/training.jpg" alt="Обучение" onerror="this.src='./img/placeholder.jpg'">
+          <div class="mediaTag">Lash Start</div>
+        </div>
+
+        <div class="content">
+          <h2>Обучение</h2>
+          <p class="muted">Курс для новичков + практика на модели. Сертификат и поддержка.</p>
+
+          <div class="callout">
+            <div class="calloutTitle">Что внутри</div>
+            <div class="muted sm">1–2 дня • практика • разбор ошибок</div>
+          </div>
+
+          <ul class="list">
+            <li>Материалы, клей, безопасность</li>
+            <li>Постановка руки и скорость</li>
+            <li>Эффекты: натуральный / лиса / кукла</li>
+          </ul>
+
+          <a class="btn btn-primary full" href="https://wa.me/972000000000" target="_blank" rel="noreferrer">
+            Узнать даты и цену
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL: FAQ -->
+    <section class="panel" id="faq" data-section="faq">
+      <div class="card">
+        <div class="head">
+          <h2>Частые вопросы</h2>
+          <p class="muted">Коротко и понятно.</p>
+        </div>
+
+        <div class="faq">
+          <details class="qa">
+            <summary>Сколько держатся ресницы?</summary>
+            <p class="muted">Обычно 3–5 недель — зависит от ухода и скорости обновления ресниц.</p>
+          </details>
+          <details class="qa">
+            <summary>Можно ли мочить в первый день?</summary>
+            <p class="muted">Лучше не мочить первые 24 часа, дальше — как обычно.</p>
+          </details>
+          <details class="qa">
+            <summary>Если есть аллергия?</summary>
+            <p class="muted">Напиши заранее — обсудим варианты и риски.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL: Contacts -->
+    <section class="panel" id="contacts" data-section="contacts">
+      <div class="card">
+        <div class="head">
+          <h2>Контакты</h2>
+          <p class="muted">Запись и вопросы.</p>
+        </div>
+
+        <div class="socials">
+          <a class="soc" href="https://wa.me/972000000000" target="_blank" rel="noreferrer">
+            <span class="soc__icon">WA</span>
+            <span><span class="soc__title">WhatsApp</span><span class="soc__meta">быстрая запись</span></span>
+            <span class="soc__go">→</span>
+          </a>
+
+          <a class="soc" href="https://instagram.com/" target="_blank" rel="noreferrer">
+            <span class="soc__icon">IG</span>
+            <span><span class="soc__title">Instagram</span><span class="soc__meta">@mylash</span></span>
+            <span class="soc__go">→</span>
+          </a>
+
+          <a class="soc" href="https://t.me/" target="_blank" rel="noreferrer">
+            <span class="soc__icon">TG</span>
+            <span><span class="soc__title">Telegram</span><span class="soc__meta">написать</span></span>
+            <span class="soc__go">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL: Location -->
+    <section class="panel" id="location" data-section="location">
+      <div class="card">
+        <div class="head">
+          <h2>Геолокация</h2>
+          <p class="muted">Город, улица, дом</p>
+        </div>
+
+        <a class="btn btn-ghost full" href="https://maps.google.com/" target="_blank" rel="noreferrer">
+          Открыть карту
+        </a>
+
+        <div class="note">© MyLash • Все права защищены</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lbClose" id="lbClose" aria-label="Закрыть">✕</button>
+    <img id="lbImg" alt="Просмотр фото">
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
