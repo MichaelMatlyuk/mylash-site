@@ -1047,3 +1047,58 @@ img, video, svg, canvas{
     white-space: normal;
   }
 }
+
+/* ===== MOBILE FIX ===== */
+@media (max-width: 768px){
+
+  /* шапка всегда видна */
+  header.top{
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    padding-top: env(safe-area-inset-top);
+    background: rgba(255,255,255,.75);
+    backdrop-filter: blur(10px);
+  }
+
+  /* лого/подпись не раздувают */
+  header.top .brand{
+    padding: 14px 14px 8px;
+    text-align: center;
+  }
+  header.top .logo{
+    font-size: 44px;      /* если у тебя другое имя класса — скажи */
+    line-height: 1;
+  }
+  header.top .sub{
+    font-size: 14px;
+  }
+
+  /* вкладки не уезжают вправо — переносятся */
+  nav.pills{
+    position: sticky;
+    top: calc(env(safe-area-inset-top) + 78px); /* подстройка под высоту бренда */
+    z-index: 9998;
+    padding: 10px 12px 14px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  nav.pills .pill{
+    white-space: nowrap;
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+
+  /* контейнеры не шире экрана */
+  .feed, .panel, .card{
+    max-width: 100%;
+  }
+
+  /* чтобы контент не прятался под шапкой */
+  main.feed{
+    padding-top: 10px;
+  }
+}
