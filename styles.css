@@ -1217,3 +1217,41 @@ img, video, svg, canvas{
     grid-column: 1 / -1 !important;
   }
 }
+
+/* HEADER sticky */
+header.top{
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  transition: transform .25s ease, padding .25s ease, background .25s ease, box-shadow .25s ease, backdrop-filter .25s ease;
+  will-change: transform;
+}
+
+/* состояние после скролла */
+header.top.is-scrolled{
+  transform: translateY(-10px);
+  padding-top: 6px;
+  padding-bottom: 6px;
+  background: rgba(255,255,255,.70);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+/* ===== MAP SIZE CONTROL ===== */
+
+.map-image{
+  margin-top: 15px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+
+  max-width: 450px;   /* уменьшаем ширину */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.map-image img{
+  width: 100%;
+  height: auto;
+  display: block;
+}

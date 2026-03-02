@@ -62,8 +62,9 @@ panels.forEach(p => obs.observe(p));
 const topBar = document.querySelector("header.top");
 
 function setHeaderState() {
-  if (!topBar) return;
-  topBar.classList.toggle("is-scrolled", window.scrollY > 40);
+  const scrolled = window.scrollY > 40;
+  if (topBar) topBar.classList.toggle("is-scrolled", scrolled);
+  document.body.classList.toggle("is-scrolled", scrolled);
 }
 
 setHeaderState();
