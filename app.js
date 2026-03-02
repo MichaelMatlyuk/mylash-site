@@ -62,13 +62,8 @@ panels.forEach(p => obs.observe(p));
 const topBar = document.querySelector("header.top");
 
 function setHeaderState() {
-  const scrolled = window.scrollY > 40;
-
-  // класс на header (для стекла/сжатия)
-  if (topBar) topBar.classList.toggle("is-scrolled", scrolled);
-
-  // класс на body (для правил типа body.is-scrolled .pills)
-  document.body.classList.toggle("is-scrolled", scrolled);
+  if (!topBar) return;
+  topBar.classList.toggle("is-scrolled", window.scrollY > 40);
 }
 
 setHeaderState();

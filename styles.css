@@ -1136,3 +1136,84 @@ img, video, svg, canvas{
     text-align: center !important;
   }
 }
+
+/* ===== MOBILE FINAL FIX (вставить в самый конец styles.css) ===== */
+@media (max-width: 768px){
+
+  /* анти-уезд вправо/влево */
+  html, body{
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  *, *::before, *::after{ box-sizing: border-box; }
+  img, video, svg, canvas{ max-width: 100%; height: auto; }
+
+  /* фоновые слои назад, чтобы НЕ перекрывали шапку */
+  .bg{
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
+  }
+
+  /* ШАПКА всегда видна */
+  header.top{
+    display: block !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 99999 !important;
+    background: rgba(255,255,255,.82) !important;
+    backdrop-filter: blur(12px);
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  /* Меню (вкладки) тоже sticky под шапкой */
+  nav.pills{
+    display: flex !important;
+    position: sticky !important;
+    top: 82px !important; /* если шапка выше/ниже — поставь 70-110 */
+    z-index: 99998 !important;
+    background: rgba(255,255,255,.72) !important;
+    backdrop-filter: blur(12px);
+    gap: 8px;
+    padding: 10px 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  nav.pills::-webkit-scrollbar{ display:none; }
+
+  /* чтобы контент не прятался под sticky */
+  main#feed{
+    padding-top: 0 !important;
+  }
+  section.panel{
+    scroll-margin-top: 140px; /* чтобы при клике по вкладке не уезжало под шапку */
+  }
+
+  /* карточки на мобиле не должны быть шире экрана */
+  .card{
+    width: min(94vw, 720px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* FIX "Обучение" (3 пункта снизу) — чтобы не уезжало и красиво переносилось */
+  .miniStats{
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+    justify-items: center !important;
+  }
+  .miniStat{
+    width: 100% !important;
+    min-width: 0 !important;
+    text-align: center !important;
+  }
+  /* третий пункт на всю ширину */
+  .miniStat:last-child{
+    grid-column: 1 / -1 !important;
+  }
+}
