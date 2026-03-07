@@ -460,10 +460,23 @@ body.nav-hide .top{
 }
 /* === FIX: Portfolio preview not visible === */
 .masonry{
-  columns: 2;
-  column-gap: 12px;
-  margin-top: 12px;
-}
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+  margin-top:12px;
+  }
+  
+  .masonry .shot{
+  width:48%;
+  max-width:420px;
+  }
+  
+  .masonry .shot img{
+  width:100%;
+  height:auto;
+  border-radius:18px;
+  }
 
 .shot{
   display: inline-block;     /* важно для columns */
