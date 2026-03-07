@@ -23,53 +23,69 @@
   </div>
 
   <header class="top">
-    <div class="brand">
-      <div class="logo">MyLash</div>
-      <div class="sub">Нежный взгляд • аккуратная работа</div>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="logo">МуЛаш</div>
+        <div class="sub">Нежный взгляд • аккуратная работа</div>
+      </div>
+
+      <nav class="pills" aria-label="Навигация">
+        <a class="pill is-active" href="#about" data-link="about">Обо мне</a>
+        <a class="pill" href="#price" data-link="price">Прайс</a>
+        <a class="pill" href="#portfolio" data-link="portfolio">Фото</a>
+        <a class="pill" href="#guarantees" data-link="guarantees">Гарантии</a>
+        <a class="pill" href="#training" data-link="training">Обучение</a>
+        <a class="pill" href="#contacts" data-link="contacts">Контакты</a>
+        <a class="pill" href="#geo" data-link="geo">Адрес</a>
+      </nav>
+    </div>
   </header>
 
-  <nav class="pills" aria-label="Навигация">
-    <a class="pill is-active" href="#about" data-link="about">Обо мне</a>
-    <a class="pill" href="#price" data-link="price">Прайс</a>
-    <a class="pill" href="#portfolio" data-link="portfolio">Фото</a>
-    <a class="pill" href="#training" data-link="training">Обучение</a>
-    <a class="pill" href="#contacts" data-link="contacts">Контакты</a>
-    <a class="pill" href="#location" data-link="location">Гео</a>
-  </nav>
-  </div>
   <main class="feed" id="feed">
 
     <!-- PANEL: about (photo + text) -->
     <section class="panel" id="about" data-section="about">
       <div class="card about-center">
-    <div class="content">
-        <h2>Обо мне</h2>
+        <div class="about-card">
+          <h2 class="about-title">Обо мне</h2>
 
-        <p class="muted">
-        Меня зовут Юлия. Более 5 лет создаю аккуратные,
-        выразительные и естественные образы.
-        Моя задача — подчеркнуть вашу природную красоту,
-        сохраняя лёгкость и комфорт.
-        </p>
+          <div class="about-main">
+            <div class="about-photo-wrap">
+              <div class="about-photo">
+                <img src="img/master.jpg" alt="Lash мастер">
+              </div>
+            </div>
 
-        <p class="muted">
-        Работаю быстро (от 1,5 часа), использую только качественные материалы
-        и уделяю внимание каждой детали — от формы до идеальной симметрии.
-        </p>
+            <div class="about-text">
+              <p class="muted">
+                Меня зовут Юлия. Более 5 лет я создаю аккуратные, выразительные и при этом естественные образы, которые подчеркивают индивидуальность каждой клиентки.
+                Моя задача — не изменить вас, а бережно подчеркнуть природную красоту, сохранив лёгкость, гармонию и комфорт в носке.
+              </p>
 
-        <div class="chips">
-            <span>Стерильно</span>
-            <span>Нежно</span>
-            <span>Комфорт</span>
+              <p class="muted">
+                Я работаю внимательно и аккуратно, уделяя внимание каждой детали — от правильного подбора изгиба и объёма до идеальной симметрии.
+                Процедура проходит комфортно и без спешки, а результат выглядит естественно, ухоженно и дорого.
+                Время работы — до 1,5 часов.
+                В работе использую только качественные, проверенные материалы.
+              </p>
+            </div>
+          </div>
+
+          <div class="about-bottom">
+            <div class="chips">
+              <span>Стерильно</span>
+              <span>Нежно</span>
+              <span>Комфорто</span>
+            </div>
+
+            <div class="stats">
+              <div><b>5+</b><span>лет опыта</span></div>
+              <div><b>1000+</b><span>клиентов</span></div>
+              <div><b>5.0</b><span>отзывы</span></div>
+            </div>
+          </div>
         </div>
-
-        <div class="stats">
-            <div><b>5+</b><span>лет опыта</span></div>
-            <div><b>1000+</b><span>клиентов</span></div>
-            <div><b>5.0</b><span>отзывы</span></div>
-        </div>
-    </div>
-</div>
+      </div>
     </section>
 
    <!-- PANEL: price (text) -->
@@ -144,10 +160,30 @@
           <button class="shot" data-full="./img/work3.jpg"><img src="./img/work3.jpg" alt="Работа 3" onerror="this.src='./img/placeholder.jpg'"></button>
           <button class="shot" data-full="./img/work4.jpg"><img src="./img/work4.jpg" alt="Работа 4" onerror="this.src='./img/placeholder.jpg'"></button>
         </div>
+      </div>
+    </section>
 
-        <a class="btn btn-ghost full" href="https://instagram.com/" target="_blank" rel="noreferrer">
-          Смотреть больше в Instagram
-        </a>
+    <!-- PANEL: guarantees -->
+    <section class="panel" id="guarantees" data-section="guarantees">
+      <div class="card">
+        <div class="head">
+          <h2>Мои гарантии</h2>
+        </div>
+
+        <p class="muted">
+          Я работаю на результат и несу полную ответственность за качество своей работы.        </p>
+        <p class="muted">
+         * Безопасность и стерильность — строгое соблюдение санитарных норм и использование одноразовых материалов.
+        </p>
+        <p class="muted">
+         * Индивидуальный подход — перед процедурой мы подробно обсуждаем ваши пожелания и подбираем оптимальный вариант.        </p>
+        <p class="muted">
+         * Гарантия 7 дней — если в течение недели после процедуры произойдёт преждевременное осыпание ресниц, я выполню бесплатную коррекцию.        </p>
+        <p class="muted">
+         * Для меня Честность и профессионализм — я всегда предупреждаю о возможных противопоказаниях и не делаю то, что может навредить вашим ресницам., чтобы каждая клиентка оставалась довольна результатом, комфортом и качеством работы.
+        </p>
+        <p class="muted">
+         * Поддержка после процедуры — рекомендации по уходу и обратная связь при необходимости.        </p>
       </div>
     </section>
 
@@ -201,15 +237,18 @@
             <span class="soc__go">→</span>
           </a>
 
-          <a class="soc" href="https://t.me/musienkojuliya " target="_blank" rel="noreferrer">
+          <a class="soc" href="https://t.me/musienkojuliya" target="_blank" rel="noreferrer">
             <span class="soc__icon">ТГ</span>
             <span><span class="soc__title">Телеграмм </span><span class="soc__meta">написать</span></span>
             <span class="soc__go">→</span>
           </a>
 
-          <a class="soc" href="+79194549474" target="_blank" rel="noreferrer">
-            <span class="soc__icon">ТЛ</span>
-            <span><span class="soc__title"> Номер Телефона </span><span class="soc__meta">+7(919)454-94-74</span></span>
+          <a class="soc" href="tel:+79991234567">
+            <span class="soc__icon">TL</span>
+            <span>
+              <span class="soc__title">Телефон</span>
+              <span class="soc__meta">+7 999 123-45-67</span>
+            </span>
             <span class="soc__go">→</span>
           </a>
         </div>
@@ -217,7 +256,7 @@
     </section>
 
     <!-- PANEL: Location -->
-   <section class="panel" id="geo">
+   <section class="panel" id="geo" data-section="geo">
   <div class="card">
     <h2>Геолокация</h2>
 
@@ -226,7 +265,7 @@
     </div>
 
     <p class="address">
-      Пермь. Сибирская, 61
+      г.Пермь, ул.Сибирская, д.61
     </p>
   </div>
 </section>
@@ -236,7 +275,5 @@
     <button class="lbClose" id="lbClose" aria-label="Закрыть">✕</button>
     <img id="lbImg" alt="Просмотр фото">
   </div>
-
-  <script src="./app.js"></script>
 </body>
 </html>

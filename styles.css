@@ -20,7 +20,6 @@
 *{ box-sizing:border-box; }
 html{
   scroll-behavior: smooth;
-  scroll-padding-top: 150px; /* чтобы якорь не прятался под sticky верхом */
 }
 body{
   margin:0;
@@ -63,39 +62,23 @@ body{
 }
 
 /* HEADER */
-header.top{
-  position: sticky;
-  top: 0;
-  z-index: 50;
+.top{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
 
-  /* чтобы был по центру */
-  width: min(1200px, calc(100% - 32px));
-  margin: 14px auto 0;
-
+.header-inner{
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-
-  padding: 18px 16px 14px;
-
-  border-radius: 22px;
-
-  /* мягкое "стекло" в начале */
-  background: rgba(255,255,255,.78);
-  border: 1px solid rgba(255, 105, 180, .10);
-  box-shadow: 0 18px 40px rgba(255, 105, 180, .14);
-
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-
-  transition: background .25s ease, box-shadow .25s ease, padding .25s ease;
+  text-align: center;
 }
 
 .brand{
   text-align: center;
   width: 100%;
-  transition: transform .25s ease, opacity .25s ease;
 }
 
 /* ЛОГО */
@@ -134,11 +117,8 @@ header.top.is-scrolled .brand{
 
 
 
-.floating{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+/* legacy .floating container (no longer used) */
+.floating{}
 .brand{
   text-align: center;
   margin-bottom: 6px;
@@ -374,31 +354,6 @@ h2{
   font-size: 12px;
 }
 
-/* portfolio */
-.masonry{
-  columns: 2;
-  column-gap: 12px;
-  margin-top: 12px;
-}
-.shot{
-  width:100%;
-  border:0;
-  padding:0;
-  background: transparent;
-  margin: 0 0 12px;
-  break-inside: avoid;
-  cursor:pointer;
-}
-.shot img{
-  width:100%;
-  display:block;
-  border-radius: 18px;
-  border: 1px solid rgba(0,0,0,.06);
-  box-shadow: 0 16px 38px rgba(0,0,0,.14);
-  transition: transform .15s ease;
-}
-.shot:active img{ transform: scale(.98); }
-
 /* training callout */
 .callout{
   margin: 12px 0;
@@ -553,7 +508,7 @@ body.nav-hide .top{
 /* Центрированный About */
 .about-center{
   text-align: center;
-  max-width: 760px;
+  max-width: 980px;
   margin: 0 auto;
   padding: 60px 50px;
 }
@@ -561,8 +516,6 @@ body.nav-hide .top{
 .about-center .muted{
   font-size: 17px;
   line-height: 1.8;
-  max-width: 640px;
-  margin: 0 auto 20px;
 }
 
 .about-center .chips{
@@ -595,6 +548,86 @@ body.nav-hide .top{
 .about-center .stats b{
   font-size:20px;
   color:#e94f8a;
+}
+
+/* About section: premium photo + text layout */
+.about-card{
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.about-title{
+  margin: 0;
+}
+
+.about-main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.about-photo-wrap{
+  flex: 0 0 auto;
+  padding: 14px 16px;
+  border-radius: 26px;
+  background: rgba(255,79,163,.04);
+  border: 1px solid rgba(255,79,163,.12);
+}
+
+.about-photo{
+  max-width: 340px;
+}
+
+.about-photo img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 1px solid rgba(255,79,163,.22);
+  box-shadow: 0 16px 38px rgba(0,0,0,.14);
+}
+
+.about-text{
+  flex: 1 1 0;
+  max-width: 540px;
+  text-align: left;
+}
+
+.about-text .muted{
+  margin: 0 0 18px;
+}
+
+.about-bottom{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.about-bottom .chips{
+  margin: 0;
+}
+
+@media (max-width: 768px){
+  .about-main{
+    flex-direction: column;
+  }
+
+  .about-photo-wrap{
+    padding: 12px 14px;
+  }
+
+  .about-photo{
+    max-width: 280px;
+  }
+
+  .about-text{
+    max-width: 100%;
+    text-align: center;
+  }
 }
 /* TRAINING CENTER STYLE */
 .training-center{
@@ -649,20 +682,8 @@ body.nav-hide .top{
   font-size:18px;
   color:#e94f8a;
 }
-/* === Apple-style floating glass header === */
+/* === Header floating styles removed: header is now static === */
 .top{
-  position: sticky;
-  top: 14px;                 /* не прилипает к краю */
-  z-index: 100;
-  margin: 0 auto;
-  width: min(1100px, calc(100% - 24px));
-  border-radius: 22px;
-  padding: 14px 16px;
-  background: rgba(255,255,255,0.16);   /* почти прозрачный */
-  border: 1px solid rgba(255,255,255,0.35);
-  backdrop-filter: blur(18px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.10);
-  transition: transform .25s ease, background .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 
 /* состояние когда проскроллил */
@@ -675,64 +696,14 @@ body.nav-hide .top{
 
 /* pills под шапкой */
 .pills{
-  width: min(1200px, calc(100% - 32px));
-  margin: 0 auto;
-
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 12px;
   flex-wrap: wrap;
-
-  transition: opacity .25s ease, transform .25s ease;
-}
-body.is-scrolled .pills{
-  opacity: 0;
-  transform: translateY(-8px);
-  pointer-events: none;
+  gap: 10px;
 }
 
-/* чтобы якоря не прятались под стеклом */
-html{ scroll-padding-top: 190px; }
-.panel{ scroll-margin-top: 190px; }
-
-/* === One floating glass container (fix overlap) === */
-.floating{
-  position: sticky;
-  top: 12px;
-  z-index: 9999;
-  width: min(980px, calc(100% - 24px));
-  margin: 0 auto;
-  padding: 12px 14px 14px;
-  border-radius: 22px;
-
-  background: rgba(255,255,255,0.22);
-  border: 1px solid rgba(255,255,255,0.45);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-
-  box-shadow:
-    0 18px 60px rgba(0,0,0,0.18),
-    inset 0 1px 0 rgba(255,255,255,0.35);
-
-  transition: padding .22s ease, background .22s ease, box-shadow .22s ease, transform .22s ease;
-}
-
-.floating.is-compact{
-  padding: 8px 12px 10px;
-  background: rgba(255,255,255,0.28);
-  box-shadow:
-    0 14px 46px rgba(0,0,0,0.16),
-    inset 0 1px 0 rgba(255,255,255,0.35);
-}
-
-/* внутри плавающего блока элементы уже НЕ sticky */
-.top{
-  padding: 0;
-  border: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
+/* === Floating glass container removed === */
+.floating{}
 
 .brand{ text-align: center; width: 100%; }
 
@@ -779,7 +750,6 @@ html{ scroll-padding-top: 190px; }
 
 /* Make anchor jumps not hide content under header */
 html{ scroll-padding-top: 170px; }
-.panel{ scroll-margin-top: 170px; }
 
 /* remove weird white line on scroll */
 .floating{
@@ -814,164 +784,7 @@ html{ scroll-padding-top: 170px; }
   align-items: center !important;
 }
 
-/* ======= APPLE-STYLE HEADER (start = solid, scroll = glass) ======= */
-
-/* базовое состояние: в начале сайта шапка как одно целое */
-.top{
-  position: sticky;
-  top: 0;
-  z-index: 50;
-
-  /* чтобы в начале не выглядела отдельной карточкой */
-  border-radius: 0;
-  box-shadow: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-
-  /* мягкий “слив” с фоном */
-  background: linear-gradient(
-    180deg,
-    rgba(255, 235, 245, 0.95) 0%,
-    rgba(255, 255, 255, 0.75) 60%,
-    rgba(255, 255, 255, 0.00) 100%
-  );
-
-  transition: background .25s ease, box-shadow .25s ease, border-radius .25s ease, backdrop-filter .25s ease;
-}
-
-/* состояние при скролле: стекло + еще прозрачнее */
-.top.is-scrolled{
-  background: rgba(255,255,255,0.38);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-
-  border-radius: 0 0 24px 24px;
-  box-shadow: 0 14px 40px rgba(0,0,0,0.12);
-}
-
-/* чтобы сверху не было белой полосы */
-html, body{
-  margin: 0;
-  padding: 0;
-}
-
-/* HEADER: в начале как единый блок */
-header.top{
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  padding: 18px 16px 14px;
-  background: transparent;
-}
-
-/* Блок бренда/лого по центру */
-header.top .brand{
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Навигация по центру */
-
-/* --- Поведение при скролле --- */
-
-/* Лого превращается в "стекло" и остаётся, вкладки уходят */
-header.top.is-scrolled{
-  padding: 10px 16px 10px;
-}
-
-/* “glass” только для лого */
-header.top.is-scrolled .brand{
-  padding: 10px 18px;
-  border-radius: 18px;
-  background: rgba(255,255,255,.18);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,.22);
-  box-shadow: 0 10px 28px rgba(0,0,0,.10);
-}
-
-/* лого чуть меньше и мягче (но остаётся красивым) */
-header.top.is-scrolled .logo{
-  font-size: 56px;
-  opacity: .92;
-}
-
-/* подпись можно сделать тише */
-header.top.is-scrolled .sub{
-  opacity: .65;
-}
-
-
-/* плавные переходы */
-header.top .brand,
-header.top .logo,
-header.top .sub,
-header.top .pills{
-  transition: all .35s ease;
-}
-
-/* ШАПКА: всё по центру */
-header.top{
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  padding: 18px 16px 14px;
-  background: transparent;
-}
-
-/* бренд/лого по центру */
-header.top .brand{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-
-/* Плавность */
-header.top .brand,
-header.top .logo,
-header.top .sub,
-
-
-/* делаем "glass" только под брендом */
-body.is-scrolled header.top{
-  padding: 10px 16px;
-}
-
-body.is-scrolled header.top .brand{
-  width: auto;
-  padding: 10px 18px;
-  border-radius: 18px;
-  background: rgba(255,255,255,.16);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,.22);
-  box-shadow: 0 10px 28px rgba(0,0,0,.10);
-}
-
-body.is-scrolled header.top .logo{
-  opacity: .92;
-}
-
-body.is-scrolled header.top .sub{
-  opacity: .65;
-}
+/* ======= Header glass/scroll behavior removed – header is static now ======= */
 
 /* FIX: без поломки sticky */
 html { width: 100%; }
@@ -1018,13 +831,13 @@ img, video, svg, canvas{
 }
 @media (max-width: 520px){
   header.top{
-    position: sticky;
-    top: 10px;
+    position: relative;
+    top: 0;
     left: 0;
     right: 0;
 
-    width: calc(100% - 24px);
-    margin: 10px auto 0;
+    width: 100%;
+    margin: 0 auto;
   }
 }
 @media (max-width: 520px){
@@ -1051,14 +864,14 @@ img, video, svg, canvas{
 /* ===== MOBILE FIX ===== */
 @media (max-width: 768px){
 
-  /* шапка всегда видна */
+  /* header layout only on mobile – no sticky/fixed */
   header.top{
-    position: sticky;
+    position: relative;
     top: 0;
-    z-index: 9999;
+    z-index: 1;
     padding-top: env(safe-area-inset-top);
-    background: rgba(255,255,255,.75);
-    backdrop-filter: blur(10px);
+    background: transparent;
+    backdrop-filter: none;
   }
 
   /* лого/подпись не раздувают */
@@ -1074,11 +887,11 @@ img, video, svg, canvas{
     font-size: 14px;
   }
 
-  /* вкладки не уезжают вправо — переносятся */
+  /* tabs stay under logo, no sticky */
   nav.pills{
-    position: sticky;
-    top: calc(env(safe-area-inset-top) + 78px); /* подстройка под высоту бренда */
-    z-index: 9998;
+    position: static;
+    top: auto;
+    z-index: 1;
     padding: 10px 12px 14px;
     display: flex;
     flex-wrap: wrap;
@@ -1157,33 +970,29 @@ img, video, svg, canvas{
     pointer-events: none !important;
   }
 
-  /* ШАПКА всегда видна */
+  /* Header & menu on mobile – static under logo, no blur/sticky */
   header.top{
     display: block !important;
-    position: sticky !important;
+    position: relative !important;
     top: 0 !important;
-    z-index: 99999 !important;
-    background: rgba(255,255,255,.82) !important;
-    backdrop-filter: blur(12px);
+    z-index: 1 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
     padding-top: 10px;
     padding-bottom: 10px;
   }
 
-  /* Меню (вкладки) тоже sticky под шапкой */
   nav.pills{
     display: flex !important;
-    position: sticky !important;
-    top: 82px !important; /* если шапка выше/ниже — поставь 70-110 */
-    z-index: 99998 !important;
-    background: rgba(255,255,255,.72) !important;
-    backdrop-filter: blur(12px);
+    position: static !important;
+    top: auto !important;
+    z-index: 1 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
     gap: 8px;
     padding: 10px 12px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    overflow-x: visible;
   }
-  nav.pills::-webkit-scrollbar{ display:none; }
 
   /* чтобы контент не прятался под sticky */
   main#feed{
@@ -1218,23 +1027,20 @@ img, video, svg, canvas{
   }
 }
 
-/* HEADER sticky */
+/* HEADER static (no sticky/scroll animation) */
 header.top{
-  position: sticky;
+  position: relative;
   top: 0;
-  z-index: 9999;
-  transition: transform .25s ease, padding .25s ease, background .25s ease, box-shadow .25s ease, backdrop-filter .25s ease;
-  will-change: transform;
+  z-index: 1;
 }
 
-/* состояние после скролла */
 header.top.is-scrolled{
-  transform: translateY(-10px);
-  padding-top: 6px;
-  padding-bottom: 6px;
-  background: rgba(255,255,255,.70);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+  transform: none;
+  padding-top: 0;
+  padding-bottom: 0;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
 }
 
 /* ===== MAP SIZE CONTROL ===== */
@@ -1254,4 +1060,46 @@ header.top.is-scrolled{
   width: 100%;
   height: auto;
   display: block;
+}
+
+.phone-row{
+  position: relative;
+  cursor: pointer;
+}
+
+.phone-actions{
+  position: absolute;
+  right: 14px;
+  top: calc(100% + 10px);
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(255, 105, 180, 0.25);
+  border-radius: 14px;
+  padding: 8px;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 180px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+  backdrop-filter: blur(10px);
+  z-index: 50;
+}
+
+.phone-actions button{
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 105, 180, 0.12);
+  color: #333;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.phone-actions button:hover{
+  background: rgba(255, 105, 180, 0.18);
+}
+
+/* Guarantees section: center title only */
+#guarantees .head{
+  text-align: center;
 }
